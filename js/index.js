@@ -3,40 +3,29 @@ let stars = document.getElementById("stars");
 stars.onclick = function (event) {
     let target = event.target;
     let next = target.nextElementSibling;
+    //Cambiaremos la clase del event.target y los elementos previos
     if (target.classList.contains('far')) {
         changeStarClass(target,'far','fas');
-        /* target.classList.remove('far');
-        target.classList.add('fas'); */
         target = target.previousElementSibling;
         while (target != null) {
             changeStarClass(target,'far','fas');
-            /* target.classList.remove('far');
-            target.classList.add('fas'); */
             target = target.previousElementSibling;
         }
 
     } else {
         while(next !=null){
+            //Cambiaremos la clase de los elementos siguientes si ya les hemos cambiado la clase antes
             if(next.classList.contains('fas')){
-                
-                removeNext(next);
+
+                next.classList.remove('fas');
+                next.classList.add('far');
                 next = next.nextElementSibling;
             }else{
                 break;
             }
 
         }
-        /* changeStarClass(target,'fas','far'); */
-        /* target.classList.remove('fas');
-        target.classList.add('far');
-        target = target.previousElementSibling;
-        while (target != null) {
-           /*  changeStarClass(target,'fas','far'); */
-           /*  target.classList.remove('fas');
-            target.classList.add('far');
-            target = target.previousElementSibling;
-        } */
- 
+        
     }
     //Con stoppropagation evitamos que el evento onclick del body se dispare tambien.
     event.stopPropagation();
@@ -61,15 +50,13 @@ document.body.addEventListener('click',function(){
     }
     
 });
-
+//Eliminamos la classe firstClass del elemento y le añadimos la classe secondClass
 function changeStarClass(element,firstClass,secondClass){
     element.classList.remove(firstClass);
     element.classList.add(secondClass);
 
 }
-function changeToFasClass(){
 
-}
 //Cambiamos el color de la estrella y las estrellas anteriores a un color determinado.
 function changeColors(event,color){
     let target = event.target;
@@ -81,11 +68,4 @@ function changeColors(event,color){
     }
 }
 
-function removeNext(target){
-    
-        target.classList.remove('fas');
-        target.classList.add('far');
-        
-    
 
-}
