@@ -50,6 +50,7 @@ document.body.addEventListener('click',function(){
     }
     
 });
+
 //Eliminamos la classe firstClass del elemento y le añadimos la classe secondClass
 function changeStarClass(element,firstClass,secondClass){
     element.classList.remove(firstClass);
